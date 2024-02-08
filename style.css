@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    color: #141a2f;
+}
+
+/* Header */
+
+header{
+    height: 12vh;
+    background-color: #141a2f;
+}
+header nav{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header nav ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+}
+header nav ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+}
+header nav ul li a{
+    font-size: 25px;
+    color: #f6f6f6;
+    transition: 0.3s;
+}
+header nav ul li a:hover{
+    font-size: 25px;
+    color: white;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #504E1C, 0 0 30px #504E1C, 0 0 40px #504E1C, 0 0 55px #504E1C, 0 0 75px #504E1C;
+    letter-spacing: 1px;
+}
+.active{
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #504E1C, 0 0 30px #504E1C, 0 0 40px #504E1C, 0 0 55px #504E1C, 0 0 75px #504E1C;
+}
+
+/* Section Home */
+
+#sec-home{
+    min-height: 120vh;
+    padding: 0 0 0 0 ;
+    gap: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+#sec-home .banner{
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    background-color: #0000003c;
+}
+#sec-home .banner .titre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #0000003c;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+#sec-home .banner .titre h1{
+    text-shadow: 0 0 5px #504E1C, 0 0 10px #504E1C, 0 0 15px #504E1C, 0 0 20px #504E1C, 0 0 30px #504E1C, 0 0 40px #504E1C, 0 0 55px #504E1C, 0 0 75px #504E1C;
+    color: #f6f6f6ea;
+    font-size: 40px;
+    z-index: 1;
+}
+#sec-home .banner .vid{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#sec-home .banner .vid video{
+    width: 100%;
+    object-fit: fill;
+    z-index: 0;
+}
+#sec-home .articles{
+    padding: 2rem 10% 2rem 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+#sec-home .articles div{
+    width: 27rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 1rem;
+    gap: 10px;
+}
+#sec-home .articles div img{
+    width: 23rem;
+    height: 15rem;
+    border-radius: 10px;
+}
+#sec-home .articles div h3{
+    font-size: 25px;
+}
+#sec-home .articles div article{
+    font-size: 20PX;
+    padding: 0 1.2rem 0 1.2rem;
+    text-align: center;
+}
+#sec-home .articles .right{
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #504E1C;
+    width: 4rem;
+    height: 4rem;
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+    transition: 0.3s;
+}
+#sec-home .articles .right:hover{
+    border: #504E1C 2px solid;
+    color: #504E1C;
+    background-color: white;
+}
+#sec-home .articles .left{
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #504E1C;
+    width: 4rem;
+    height: 4rem;
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+    transition: 0.3s;
+}
+#sec-home .articles .left:hover{
+    border: #504E1C 2px solid;
+    color: #504E1C;
+    background-color: white;
+}
+
+/* Section SignIn */
+
+#sec-sign{
+    height: 120vh;
+    padding: 0 0 0 0 ;
+    gap: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+#sec-sign h1{
+    font-size: 55px;
+}
+#sec-sign h2{
+    font-size: 30px; 
+}
+#sec-sign form{
+    padding: 1rem;
+    width: 40%;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#sec-sign form div{
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+#sec-sign form div label{
+    font-size: 25px;
+    width: 9rem;
+}
+#sec-sign form div input{
+    border-radius: 5px;
+    font-size: 20px;
+    width: 15rem;
+    height: 2rem;
+    border: 2px solid #141a2f;
+}
+#sec-sign form div select{
+    border: 2px solid #141a2f;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 15rem;
+    height: 2rem;
+    background-color: white;
+    text-align: center;
+}
+#sec-sign form button{
+    border: 2px solid #141a2f;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+}
+/* #sec-sign form .select label{
+    width: 8rem;
+} */
