@@ -5,46 +5,53 @@ require 'header.php';
 ?>
 
 <section id='sec-sign'>
-<h1>login</h1>
-<?php 
-$req = $pdo->query('SELECT pseudo,password FROM users');
-$aff = $req->fetchAll();
-// $req = $pdo->query('SELECT * FROM users WHERE pseudo = "Miims"');
+    <h1>login</h1>
+    <?php
+    $userFalse = null;
+    $empty = null;
 
-
-// echo '<pre>' , var_dump($aff) , '</pre>';
-$userFalse = null;
-
-if (!empty($_POST['pseudo']) || !empty($_POST['password'])) {
-    foreach ($aff as $key) {
-        if ($_POST['pseudo'] == $key["pseudo"]){
-            echo $key["pseudo"];
-            $req = $pdo->query('SELECT * FROM users WHERE pseudo ="'.$_POST['pseudo'].'"');
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+            $req = $pdo->query('SELECT pseudo FROM users');
             $aff = $req->fetchAll();
+            if (sizeof($aff) > 0) {
+                foreach ($aff as $key) {
+                    if ($_POST['pseudo'] == $key["pseudo"]) {
+                        $req2 = $pdo->query('SELECT user_id,password FROM users WHERE pseudo ="' . $_POST['pseudo'] . '"');
+                        $aff2 = $req2->fetchAll();
+                        foreach ($aff2 as $key) {
+                            if ($_POST['password'] == $key['password']) {
+                                $_SESSION['user_id'] = $key["user_id"];
+                                $_SESSION['pseudo'] = $_POST['pseudo'];
+                                $_SESSION['connected'] = true;
 
-    // echo('ID : '.$key["password"].'<br>Pseudo : '.$key["pseudo"].'<br>');
-        }else{
-            $userFalse =  'Username incorrecte';
+                                header('location: index.php');
+                                exit;
+                            } else {
+                                $userFalse = '<h2 style="color:red;font-size:20px">Pseudo ou mot de passe incorrect</h2>';
+                            }
+                        }
+                    } else {
+                        $userFalse = '<h2 style="color:red;font-size:20px">Pseudo ou mot de passe incorrect</h2>';
+                    }
+                }
+            } else {
+                $userFalse = '<h2 style="color:red;font-size:20px">Pseudo ou mot de passe incorrect</h2>';
+            }
+        } else {
+            $empty = '<h2 style="color:red;font-size:20px">Ne pas laisser les champs vides</h2>';
         }
     }
-}else{
-    echo 'Ne pas laisser les champs vide.';
-}
-// if ($userFalse) {
-//     echo $userFalse;
-// }
 
+    if ($empty) {
+        echo $empty;
+    }
+    if ($userFalse) {
+        echo $userFalse;
+    }
+    ?>
 
-
-
-// for ($i=0; $i < sizeof($aff); $i++) { 
-//     // echo $aff[$i];
-//     for ($a=0; $a < sizeof($aff[$i]); $a++) { 
-//         echo $aff[$i][$a].'<br>';
-//     }
-// }
-?>
-<form action="login.php" method='POST'>
+    <form style='height: 25vh;' action="login.php" method='POST'>
         <div>
             <label for="pseudo">Pseudo : </label>
             <input type="text" name='pseudo' id='pseudo'>
@@ -55,6 +62,7 @@ if (!empty($_POST['pseudo']) || !empty($_POST['password'])) {
         </div>
         <button type='submit'>SignIn</button>
     </form>
+    <a href="signIn.php" class="inscr">Inscription</a>
 </section>
 
 

@@ -4,45 +4,40 @@ $nav = 'sign';
 require 'header.php';
 ?>
 <section id='sec-sign'>
-    <h1>Test DB php</h1>
+    <h1>Inscription</h1>
     <?php
     $error = null;
-    
-    if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['age']) && !empty($_POST['ville'])){
-        if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['age']) && isset($_POST['ville'])){
-            try{    
-            $req = $pdo->prepare('INSERT INTO users VALUES(:user_id, :fname, :lname, :pseudo, :password, :age, :id_ville_user)');
-            $req->execute([
-                'user_id' => NULL,
-                'fname' => $_POST['fname'],
-                'lname' => $_POST['lname'],
-                'pseudo' => $_POST['pseudo'],
-                'password' => $_POST['password'],
-                'age' => $_POST['age'],
-                'id_ville_user' => $_POST['ville']
-            ]);
-            echo '<h2 style="color:#00a400a9;font-size:20px">Vous avez bien été inscrit</h2>';
-                // $_SESSION['fname'] = $_POST['fname'];
-                // $_SESSION['lname'] = $_POST['lname'];
-                // $_SESSION['pseudo'] = $_POST['pseudo'];
-                // $_SESSION['password'] = $_POST['password'];
-                // $_SESSION['age'] = $_POST['age'];
-                // $_SESSION['ville'] = $_POST['ville'];
-            }catch(PDOException $e) {
-                // die("Erreur : " . $e->getMessage());
-                echo '<h2 style="color:red;font-size:20px">Ce pseudo est déjà pris.</h2>';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['birth_day']) && !empty($_POST['ville'])) {
+            if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['birth_day']) && isset($_POST['ville'])) {
+                try {
+                    $req = $pdo->prepare('INSERT INTO users VALUES(:user_id, :fname, :lname, :pseudo, :password, :birth_day, :picture, :id_ville_user)');
+                    $req->execute([
+                        'user_id' => NULL,
+                        'fname' => $_POST['fname'],
+                        'lname' => $_POST['lname'],
+                        'pseudo' => $_POST['pseudo'],
+                        'password' => $_POST['password'],
+                        'birth_day' => $_POST['birth_day'],
+                        'picture' => 'img/profil.png',
+                        'id_ville_user' => $_POST['ville']
+                    ]);
+                    echo '<h2 style="color:#00a400a9;font-size:20px">Vous avez bien été inscrit</h2>';
+                } catch (PDOException $e) {
+                    echo '<h2 style="color:red;font-size:20px">Ce pseudo est déjà pris.</h2>';
+                    echo $e->getMessage();
+                }
+            } else {
+                echo '<h2 style="color:red;font-size:20px">Erreur isset</h2>';
             }
-        }else{
-            echo '<h2 style="color:red;font-size:20px">Erreur isset</h2>';
+        } else {
+            $error = '<h2 style="color:red;font-size:20px">Ne pas laisser les champs vides</h2>';
         }
-    }else{
-        $error =  '<h2 style="color:red;font-size:20px">Ne pas laisser les champs vide</h2>';
     }
     ?>
-    <h2>Formulaire</h2>
     <?php if ($error) {
         echo $error;
-    }?>
+    } ?>
     <form action="signIn.php" method='POST'>
         <div>
             <label for="fname">FirstName : </label>
@@ -61,8 +56,8 @@ require 'header.php';
             <input type="password" name='password' id='password'>
         </div>
         <div>
-            <label for="age">Age : </label>
-            <input type="number" name='age' id='age'>
+            <label for="birth_day">Date : </label>
+            <input type="date" name='birth_day' id='birth_day'>
         </div>
         <div class='select'>
             <label for="ville">Ville : </label>

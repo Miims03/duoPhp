@@ -15,8 +15,13 @@ require 'header.php';
         </div>
     </div>
     <div class="articles">
+        <h1>Articles de blog</h1>
+        <div class='lesArticles'>
+
+        
         <div class='left'><</div>
-        <div>
+        <div class = 'contArticle'>
+        <div class='test'>
             <img src="img/fleur.jpg">
             <h3>Fleur</h3>
             <article>
@@ -36,8 +41,10 @@ require 'header.php';
             <article>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quos aut, nisi, incidunt repellat fugit consequatur nihil placeat sed hic distinctio voluptatibus beatae recusandae voluptates?
             </article>
+        </div>
         </div>
         <div class='right'>></div>
+        </div>
     </div>
 </section>
 <?php

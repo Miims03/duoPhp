@@ -7,29 +7,72 @@
     list-style: none;
     box-sizing: border-box;
     color: #141a2f;
+    user-select: none;
 }
 
 /* Header */
-
+body{
+    background-color: #f5f5f5;
+}
 header{
-    height: 12vh;
-    background-color: #141a2f;
+    height: 8vh;
+    background-color: rgb(20, 26, 47);
 }
 header nav{
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: row; 
+    padding: 0 3rem 0 3rem;
+}
+header .logo{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    color: white;
+    font-size: 35px;
 }
 header nav ul{
     height: 100%;
-    width: 100%;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 2rem;
+}
+header nav .log{
+    justify-content: end;
+    gap: 1.5rem;
+}
+/* header nav .log li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+header nav .log a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.6rem;
+    height: 3.6rem;
+}
+
+header nav .log a img{
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #f6f6f6;
+    transition: 0.1s;
+    
+}
+header nav .log a img:hover{
+    width: 3.6rem;
+    height: 3.6rem;
 }
 header nav ul li{
     display: flex;
@@ -43,8 +86,6 @@ header nav ul li a{
     transition: 0.3s;
 }
 header nav ul li a:hover{
-    font-size: 25px;
-    color: white;
     color: #FFFFFF;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #504E1C, 0 0 30px #504E1C, 0 0 40px #504E1C, 0 0 55px #504E1C, 0 0 75px #504E1C;
     letter-spacing: 1px;
@@ -56,7 +97,7 @@ header nav ul li a:hover{
 /* Section Home */
 
 #sec-home{
-    min-height: 120vh;
+    min-height: 84vh;
     padding: 0 0 0 0 ;
     gap: 1rem;
     display: flex;
@@ -98,14 +139,32 @@ header nav ul li a:hover{
     z-index: 0;
 }
 #sec-home .articles{
-    padding: 2rem 10% 2rem 10%;
+    padding: 3rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+}
+#sec-home .articles h1{
+    font-size: 30px;
+}
+#sec-home .lesArticles{
+    /* padding: 5rem 0 5rem 0; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 3rem;
 }
-#sec-home .articles div{
+#sec-home .lesArticles .contArticle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+#sec-home .lesArticles .contArticle div{
     width: 27rem;
     display: flex;
     justify-content: center;
@@ -116,59 +175,68 @@ header nav ul li a:hover{
     padding: 1rem;
     gap: 10px;
 }
-#sec-home .articles div img{
+#sec-home .lesArticles .contArticle div img{
     width: 23rem;
     height: 15rem;
     border-radius: 10px;
 }
-#sec-home .articles div h3{
+#sec-home .lesArticles .contArticle div h3{
     font-size: 25px;
 }
-#sec-home .articles div article{
+#sec-home .lesArticles .contArticle div article{
     font-size: 20PX;
     padding: 0 1.2rem 0 1.2rem;
     text-align: center;
 }
-#sec-home .articles .right{
+#sec-home .lesArticles .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     cursor: pointer;
     border-radius: 50%;
-    background-color: #504E1C;
+    background-color: #141a2f;
     width: 4rem;
     height: 4rem;
-    font-size: 25px;
+    font-size: 40px;
     color: white;
     font-weight: 700;
     transition: 0.3s;
 }
-#sec-home .articles .right:hover{
-    border: #504E1C 2px solid;
-    color: #504E1C;
+#sec-home .lesArticles .right:hover{
+    border: #141a2f 2px solid;
+    color: #141a2f;
     background-color: white;
 }
-#sec-home .articles .left{
+#sec-home .lesArticles .left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     cursor: pointer;
     border-radius: 50%;
-    background-color: #504E1C;
+    background-color: #141a2f;
     width: 4rem;
     height: 4rem;
-    font-size: 25px;
+    font-size: 40px;
     color: white;
     font-weight: 700;
     transition: 0.3s;
 }
-#sec-home .articles .left:hover{
-    border: #504E1C 2px solid;
-    color: #504E1C;
+#sec-home .lesArticles .left:hover{
+    border: #141a2f 2px solid;
+    color: #141a2f;
     background-color: white;
 }
 
 /* Section SignIn */
 
 #sec-sign{
-    height: 120vh;
-    padding: 0 0 0 0 ;
+    background-color: white;
+    border-radius: 20px;
+    height: 80vh;
+    margin: 2vh 35vw 2vh 35vw;
+    padding: 5rem 0 0 0 ;
     gap: 1rem;
     display: flex;
     justify-content: start;
@@ -177,18 +245,21 @@ header nav ul li a:hover{
 }
 #sec-sign h1{
     font-size: 55px;
+    margin-bottom: 1.5rem;
 }
 #sec-sign h2{
     font-size: 30px; 
 }
 #sec-sign form{
-    padding: 1rem;
-    width: 40%;
+    margin-top: 1.5rem;
+    padding: 1rem 0rem 1rem 0rem;
+    width: 100%;
     height: 35vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 0.5rem
 }
 #sec-sign form div{
     width: 100%;
@@ -204,20 +275,23 @@ header nav ul li a:hover{
     width: 9rem;
 }
 #sec-sign form div input{
-    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 1px 0 15px;
+    border-radius: 30px;
     font-size: 20px;
     width: 15rem;
-    height: 2rem;
+    height: 2.5rem;
     border: 2px solid #141a2f;
 }
 #sec-sign form div select{
+    cursor: pointer;
     border: 2px solid #141a2f;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 20px;
     width: 15rem;
-    height: 2rem;
+    height: 2.5rem;
     background-color: white;
-    text-align: center;
+    padding: 0 15px 0 15px;
 }
 #sec-sign form button{
     border: 2px solid #141a2f;
@@ -228,6 +302,197 @@ header nav ul li a:hover{
     height: 10rem;
     cursor: pointer;
 }
-/* #sec-sign form .select label{
-    width: 8rem;
+
+footer{
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #141a2f;
+}
+footer h1{
+    color: #ffffff;
+}
+
+#sec-home form a{
+    height: 3rem;
+    width: 15rem;
+    font-size:22px;
+    cursor: pointer;
+    border: 2px solid #141a2f;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+#sec-home form a:hover{
+    border: none;
+    background-color: #141a2f;
+    color: #FAFAFA;
+}
+
+#sec-sign .inscr{
+    height: 3rem;
+    width: 15rem;
+    font-size:22px;
+    cursor: pointer;
+    border: 2px solid #141a2f;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+#sec-sign .inscr:hover{
+    border: none;
+    background-color: #141a2f;
+    color: #FAFAFA;
+}
+#sec-profil{
+    min-height: 84vh;
+    padding: 0 0 0 0 ;
+    gap: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+
+}
+#sec-profil .cont1 {
+    padding: 5rem 0 0 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+    width: 30%;
+    border-right: solid #141a2f 2px;
+    gap: 3rem;
+}
+#sec-profil .cont1 .limg{
+    /* background-color: #504E1C; */
+    width: 52%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+    padding-left: 25px;
+}
+#sec-profil .cont1 .limg .btnpp{
+    color: #141a2f;
+    font-size: 25px;
+}
+#sec-profil .cont1 .limg .shadowImg{
+    position: relative;
+    
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    
+}
+#sec-profil .cont1 .limg .shadowImg .shad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    background-color: #00000000;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    z-index: 1;
+    transition: 0.5s;
+}
+#sec-profil .cont1 .limg .shadowImg .shad:hover{
+    background-color: #000000b1;
+}
+#sec-profil .cont1 .limg .shadowImg .shad:hover a{
+    color: #f6f6f6;
+}
+#sec-profil .cont1 .limg .shadowImg .shad a{
+    font-size: 35px;
+    color: #f6f6f600;
+    transition: 0.5s;
+}
+#sec-profil .cont1 .limg .shadowImg img{
+    position: absolute;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+}
+#sec-profil .cont1 .limg a{
+    cursor: pointer;
+}
+#sec-profil .cont1 .limg form{
+    border: #141a2f 2px solid;
+    padding: 1rem;
+    background-color: #f6f6f6;
+    position: absolute;
+    z-index: 1;
+    top: 13rem;
+    left: 24rem;
+    display: none;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+#sec-profil .cont1 .info{
+    width: 53%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+#sec-profil .cont1 .info .info-label{
+    padding-right: 1rem;
+    border-right: solid #141a2f 1px;
+}
+#sec-profil .cont1 .info .info-label h3{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+/* #sec-profil .cont1 .info .info-rep{
+    
 } */
+
+
+#sec-profil .cont2 {
+    /* padding: 5rem 0 0 0; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+}
+
+
+.ppChoice{
+    display: none;
+    padding: 5rem 0 0 0;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    min-height: 84vh;
+}
+.imgPpChoice{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.imgPpChoice img{
+    cursor: pointer;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+}
