@@ -39,30 +39,57 @@ require 'header.php';
                 </form>
 
             </div>
+
+            <?php 
+            if (isset($_POST['inputPseudo'])) {
+                $req2 = $pdo->query('UPDATE users SET pseudo = "' . $_POST['inputPseudo'] . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
+                $_SESSION['pseudo'] = $_POST['inputPseudo'];
+                header("Refresh: 0.1; url=profil.php");
+            }
+            if (isset($_POST['inputFname'])) {
+                $req2 = $pdo->query('UPDATE users SET fname = "' . $_POST['inputFname'] . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
+                header("Refresh: 0.1; url=profil.php");
+            }
+            
+            ?>
+            <form action="profil.php" method='POST' class='formModif'>
             <div class='info'>
                 <div class='info-label'>
-                    <h3><a href="#" class="fa-solid fa-pen"></a> Pseudo </h3>
-                    <h3><a href="#" class="fa-solid fa-pen"></a> FirstName </h3>
-                    <h3><a href="#" class="fa-solid fa-pen"></a> LastName </h3>
-                    <h3><a href="#" class="fa-solid fa-pen"></a> Age </h3>
+                    <h3><a class="fa-solid fa-pen btnPseudo"></a> Pseudo </h3>
+                    <h3><a class="fa-solid fa-pen btnFname"></a> FirstName </h3>
+                    <h3><a class="fa-solid fa-pen btnLname"></a> LastName </h3>
+                    <h3><a class="fa-solid fa-pen btnAge"></a> Age </h3>
                     <h3><a class="">**</a> Ville </h3>
                 </div>
+
+                
                 <div class='info-rep'>
-                    <h3>
+                
+                    <h3 class='h3Pseudo'>
                         <?php echo $key['pseudo'] ?>
                     </h3>
-                    <h3>
+                    <input class='inputPseudo' name='inputPseudo' type="hidden" value='<?php echo $key['pseudo'] ?>'>
+
+                    <h3 class='h3Fname'>
                         <?php echo $key['fname'] ?>
                     </h3>
-                    <h3>
+                    <input class='inputFname' name='inputFname' type="hidden" value='<?php echo $key['fname'] ?>'>
+
+                    <h3 class='h3Lname'>
                         <?php echo $key['lname'] ?>
                     </h3>
-                    <h3>
+                    <input class='inputLname' name='inputLname' type="hidden" value='<?php echo $key['lname'] ?>'>
+
+
+                    <h3 class='h3Age'>
                         <?php
                         $datetime = new DateTime($key['birth_day']);
                         echo age($datetime) . ' ans';
                         ?>
                     </h3>
+                    <input class='inputAge' name='inputAge' type="hidden" value='<?php echo $key['birth_day'] ?>'>
+
+
                     <h3>
                         <?php
                         $req = $pdo->query('SELECT name_ville FROM ville WHERE id_ville = "' . $key['id_ville_user'] . '"');
@@ -73,16 +100,31 @@ require 'header.php';
                         ?>
 
                     </h3>
+                    
                 </div>
+                
 
             </div>
+            <button type='submit'  class='btnSubModif'>Modifier</button>
+            </form>
         </div>
         <?php
     }
     ?>
     <div class="cont2">
         <div class="profilBase">
-            <?php require 'function/profilBase.php'; ?>
+        <?php
+        $req = $pdo->query('SELECT pseudo,fname,lname,birth_day,picture FROM users WHERE user_id = "' . $_SESSION['user_id'] . '"');
+        $aff = $req->fetchAll();
+        foreach ($aff as $key) {
+
+        ?>
+
+        <h1>Bienvenue <?php echo $key['pseudo']?></h1>
+
+<?php
+}
+?>
         </div>
         <div class="ppChoice">
             <?php
@@ -105,8 +147,8 @@ require 'header.php';
                     if (isset($_POST['ppChange'])) {
                         $pic = $_POST['ppChange'];
                         $req2 = $pdo->query('UPDATE users SET picture = "' . $pic . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
-                        var_dump($_POST['ppChange']);
-                        header("Refresh: 0.1; url=profil.php");
+                        // var_dump($_POST['ppChange']);    
+                        // header("Refresh: 0.1; url=profil.php");
                     }
                     ?>
                 </div>

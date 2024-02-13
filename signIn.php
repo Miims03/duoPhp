@@ -25,7 +25,6 @@ require 'header.php';
                     echo '<h2 style="color:#00a400a9;font-size:20px">Vous avez bien été inscrit</h2>';
                 } catch (PDOException $e) {
                     echo '<h2 style="color:red;font-size:20px">Ce pseudo est déjà pris.</h2>';
-                    echo $e->getMessage();
                 }
             } else {
                 echo '<h2 style="color:red;font-size:20px">Erreur isset</h2>';
@@ -62,7 +61,7 @@ require 'header.php';
         <div class='select'>
             <label for="ville">Ville : </label>
             <select name="ville" name='ville' id="ville">
-                <option value="">Choose country</option>
+                <option value="">Choose city</option>
                 <option value="1">Bruxelles</option>
                 <option value="2">Marseille</option>
                 <option value="3">Marrakech</option>
