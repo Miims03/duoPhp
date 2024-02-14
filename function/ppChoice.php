@@ -6,21 +6,19 @@
     $files = glob($directory, GLOB_BRACE);
     foreach ($files as $file) {
         ?>
-                <!-- <div class="shadowImg">
-                    <div class="shad1">
-                        <a class='fa-solid fa-pen ashad1'></a>
-                    </div> -->
-                    <img class='imgslc' src="<?php echo $file ?>">
-                <!-- </div> -->
+            <img class='imgslc' src="<?php echo $file ?>">
         <?php
     }
     $req = $pdo->query('SELECT pseudo,fname,lname,birth_day,picture FROM users WHERE user_id = "' . $_SESSION['user_id'] . '"');
     $aff = $req->fetchAll();
     foreach ($aff as $key) {
-        if (isset($_POST['ppChange'])) {
+        if (isset($_POST['ppChange']) && !empty($_POST['ppChange'])) {
             $pic = $_POST['ppChange'];
-            $req2 = $pdo->query('UPDATE users SET picture = "'.$pic.'" WHERE user_id = "' . $_SESSION['user_id'] . '"');
-            header("refresh: 0.1; url=function/ppChoice.php");
+            $req2 = $pdo->query('UPDATE users SET picture = "' . $pic . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
+            // header("Refresh: 0.1; url=profil.php");
+            ?>
+            <script> location.replace("profil.php"); </script>
+            <?php
         }
         ?>
     </div>

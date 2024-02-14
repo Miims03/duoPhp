@@ -6,6 +6,7 @@ btnpp.addEventListener('click', () => {
         formpp.style.display = 'none'
     } else {
         formpp.style.display = 'flex'
+        
     }
 })
 
@@ -19,8 +20,7 @@ imgslc.forEach(elem => {
 
 })
 const shad = document.querySelector('.shad')
-const shad1 = document.querySelectorAll('.shad1')
-const ashad1 = document.querySelectorAll('.ashad1')
+const images = document.querySelectorAll('.imgslc')
 const ppChoice = document.querySelector('.ppChoice')
 const profilBase = document.querySelector('.profilBase')
 
@@ -30,32 +30,23 @@ shad.addEventListener('click', () => {
         profilBase.style.display = 'flex'
     } else {
         ppChoice.style.display = 'flex'
+        ppChoice.style.animationName = 'slidein'
+        ppChoice.style.animationDuration = '1s'
+        ppChoice.style.overflow = 'hidden'
         profilBase.style.display = 'none'
     }
-    // ppChoice.style.display = 'flex'
-    // profilBase.style.display = 'none'
 })
 
-
-
-
-
-shad1.forEach(elem => {
-    elem.addEventListener('click', () => {
-        if (elem.style.backgroundColor != '#000000b1') {
-            elem.style.backgroundColor = '#000000b1'
-            elem.childNodes[1].style.color = '#f6f6f6'
-        }  
-    });
-});
-// shad1.forEach(elem => {
-//     elem.addEventListener('click', (e) => {
-//         if (e.target.style.backgroundColor != '#000000b1') {
-//             e.target.backgroundColor = '#000000b1'
-//             elem.childNodes[1].style.color = '#f6f6f600'
-//         }  
-//     });
-// });
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        images.forEach(img2 => {
+            if(img2 !== img){
+                img2.classList.remove('select')
+            }
+        })
+        img.classList.add('select')
+    })
+})
 
 const btnSubModif = document.querySelector('.btnSubModif')
 

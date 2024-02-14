@@ -22,7 +22,44 @@ require 'header.php';
                         'picture' => 'img/profil.png',
                         'id_ville_user' => $_POST['ville']
                     ]);
-                    echo '<h2 style="color:#00a400a9;font-size:20px">Vous avez bien été inscrit</h2>';
+                    ?>
+                    <h2 style="color:#00a400a9;font-size:20px;text-align:center">
+                        Vous avez bien été inscrit
+                        <br>
+                        <span style="color:#00a400a9;font-size:15px;text-align:center">Vous allez être redirigé dans</span>
+                        <span style="color:#00a400a9;font-size:15px;text-align:center" class='rebour'></span>
+                    </h2>
+                    <script>
+                        const redirect = (sec) => {
+                            let currentSec = sec;
+                            const inter = setInterval(() => {
+                                if (currentSec === 0) {
+                                    clearInterval(inter);
+                                    location.replace("profil.php");
+                                } else {
+                                    const rebour = document.querySelector('.rebour')
+                                    rebour.innerHTML = currentSec
+                                    currentSec--;
+                                }
+                            }, 1000);
+                        }
+                        redirect(5)
+                    </script>
+                    <?php
+                    try {
+                        $req = $pdo->query('SELECT user_id,pseudo,password FROM users WHERE pseudo ="' . $_POST['pseudo'] . '"');
+                        $aff = $req->fetchAll();
+                        foreach ($aff as $key) {
+                                $_SESSION['user_id'] = $key["user_id"];
+                                $_SESSION['pseudo'] = $_POST['pseudo'];
+                                $_SESSION['connected'] = true;
+
+                                header('location: profil.php');
+                                exit;
+                        }
+                    } catch (PDOException) {
+                        echo 'error';
+                    }
                 } catch (PDOException $e) {
                     echo '<h2 style="color:red;font-size:20px">Ce pseudo est déjà pris.</h2>';
                 }

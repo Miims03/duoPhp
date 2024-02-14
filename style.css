@@ -380,6 +380,9 @@ footer h1{
     padding-left: 25px;
 }
 #sec-profil .cont1 .limg .btnpp{
+    position: absolute;
+    top: 9rem;
+    left: 24rem;
     color: #141a2f;
     font-size: 25px;
 }
@@ -511,9 +514,38 @@ footer h1{
     flex-wrap: wrap;
     gap: 1rem;
 }
-.imgPpChoice img{
+.imgPpChoice .imgslc{
     cursor: pointer;
     border-radius: 50%;
     height: 10rem;
     width: 10rem;
 }
+.select{
+    box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 5px #141a2f, 0 0 30px #141a2f, 0 0 40px #141a2f, 0 0 45px #141a2f, 0 0 45px #141a2f;
+}
+.imgPP{
+    box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 5px #141a2f, 0 0 30px #141a2f, 0 0 40px #141a2f, 0 0 45px #141a2f, 0 0 45px #141a2f;
+    animation: slideY 4s;
+}
+@keyframes slideY {
+    0% {
+      transform: translateY(-5%);
+    }
+    33%{
+        transform: translateY(2%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+  }
+  
+
+@keyframes slidein {
+    0% {
+      transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+  
