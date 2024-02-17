@@ -98,17 +98,17 @@ require 'header.php';
         <div class='select'>
             <label for="ville">Ville : </label>
             <select name="ville" name='ville' id="ville">
-                <option value="">Choose city</option>
-                <option value="1">Bruxelles</option>
-                <option value="2">Marseille</option>
-                <option value="3">Marrakech</option>
-                <option value="4">New-York</option>
-                <option value="5">Sérville</option>
-                <option value="6">Valence</option>
-                <option value="7">Namur</option>
-                <option value="8">Paris</option>
-                <option value="9">Casablanca</option>
-                <option value="10">Las-Vegas</option>
+            <option value="">Choose city</option>
+
+                <?php 
+                $req = $pdo->query('SELECT name_ville,id_ville FROM ville');
+                $aff = $req->fetchAll();
+                foreach ($aff as $key) {
+                ?>
+                <option value="<?php echo $key['id_ville'] ?>"><?php echo $key['name_ville'] ?></option>
+                <?php 
+                };
+                ?>
             </select>
         </div>
         <button type='submit'>SignIn</button>

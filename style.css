@@ -228,7 +228,80 @@ header nav ul li a:hover{
     color: #141a2f;
     background-color: white;
 }
-
+#sec-home form a{
+    height: 3rem;
+    width: 15rem;
+    font-size:22px;
+    cursor: pointer;
+    border: 2px solid #141a2f;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+#sec-home form a:hover{
+    border: none;
+    background-color: #141a2f;
+    color: #FAFAFA;
+}
+#sec-home .tabVille{
+    padding: 0 15% 5rem 15%;
+    min-height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+}
+#sec-home .tabVille h1{
+    font-size: 30px;
+}
+#sec-home .tabVille .tab{
+    border-radius: 10px;
+    border: #141a2f 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+#sec-home .tabVille .tab div{
+    border-radius: 10px;
+    border-right: #141a2f 2px solid;
+    width: 22rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 1rem; */
+}
+#sec-home .tabVille .tab .capitale{
+    border: none;
+}
+#sec-home .tabVille .tab div h3{
+    background-color: #141a2f55;
+    color: #141a2f;
+    border-radius: 10px;
+    padding: 0.5rem 0 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 100%;
+    border-bottom: #141a2f 2px solid;
+    
+}
+#sec-home .tabVille .tab div h2{
+    border-radius: 10px;
+    padding: 0.5rem 0 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    border-top: #141a2f 2px solid;
+}
 /* Section SignIn */
 
 #sec-sign{
@@ -314,23 +387,6 @@ footer h1{
     color: #ffffff;
 }
 
-#sec-home form a{
-    height: 3rem;
-    width: 15rem;
-    font-size:22px;
-    cursor: pointer;
-    border: 2px solid #141a2f;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-}
-#sec-home form a:hover{
-    border: none;
-    background-color: #141a2f;
-    color: #FAFAFA;
-}
 
 #sec-sign .inscr{
     height: 3rem;
@@ -381,7 +437,7 @@ footer h1{
 }
 #sec-profil .cont1 .limg .btnpp{
     position: absolute;
-    top: 9rem;
+    top: 10rem;
     left: 24rem;
     color: #141a2f;
     font-size: 25px;
@@ -427,21 +483,21 @@ footer h1{
 #sec-profil .cont1 .limg a{
     cursor: pointer;
 }
-#sec-profil .cont1 .limg form{
+#sec-profil .cont1 .limg .formpp{
     border: #141a2f 2px solid;
     padding: 1rem;
     background-color: #f6f6f6;
     position: absolute;
     z-index: 1;
     top: 13rem;
-    left: 24rem;
+    left: 25rem;
     display: none;
     justify-content: start;
     align-items: center;
     flex-direction: column;
 }
 #sec-profil .cont1 .formModif{
-    width: 56%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -464,7 +520,7 @@ footer h1{
 #sec-profil .cont1 .formModif .info .info-label{
     padding-right: 1rem;
     border-right: solid #141a2f 1px;
-    background-color: #f5f5f5;
+    height: 100%;
 }
 #sec-profil .cont1 .formModif .info .info-label h3{
     display: flex;
@@ -474,7 +530,16 @@ footer h1{
     font-size: 20px;
     gap: 1rem;
 }
+#sec-profil .cont1 .formModif .info .info-rep{
+    height: 100%;
+}
 #sec-profil .cont1 .formModif .info .info-rep input{
+    height: 1.85rem;
+    width: 10rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+#sec-profil .cont1 .formModif .info .info-rep select{
     height: 2rem;
     width: 10rem;
     font-size: 20px;
@@ -494,7 +559,9 @@ footer h1{
     height: 100%;
     width: 70%;
 }
-
+.inputVille{
+    display: none;
+}
 
 .ppChoice{
     display: none;
@@ -520,7 +587,7 @@ footer h1{
     height: 10rem;
     width: 10rem;
 }
-.select{
+.selecti{
     box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 5px #141a2f, 0 0 30px #141a2f, 0 0 40px #141a2f, 0 0 45px #141a2f, 0 0 45px #141a2f;
 }
 .imgPP{

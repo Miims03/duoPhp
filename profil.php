@@ -40,14 +40,20 @@ if (!is_conn()) {
                 </div>
 
                 <?php
-                if (isset($_POST['inputPseudo'])) {
-                    $req2 = $pdo->query('UPDATE users SET pseudo = "' . $_POST['inputPseudo'] . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
-                    $_SESSION['pseudo'] = $_POST['inputPseudo'];
-                    echo '<script> location.replace("profil.php"); </script>';
-                }
-                if (isset($_POST['inputFname'])) {
-                    $req2 = $pdo->query('UPDATE users SET fname = "' . $_POST['inputFname'] . '" WHERE user_id = "' . $_SESSION['user_id'] . '"');
-                    echo '<script> location.replace("profil.php"); </script>';
+                if (!empty($_POST['inputPseudo']) && !empty($_POST['inputFname']) && !empty($_POST['inputLname']) && !empty($_POST['inputAge']) && !empty($_POST['ville'])){
+                    try{
+                        $req2 = $pdo->query('UPDATE users SET 
+                        pseudo = "' . $_POST['inputPseudo'] . '",
+                        fname = "' . $_POST['inputFname'] . '",
+                        lname = "' . $_POST['inputLname'] . '",
+                        birth_day = "' . $_POST['inputAge'] . '",
+                        id_ville_user = "' . $_POST['ville'] . '"
+                        WHERE user_id = "' . $_SESSION['user_id'] . '"');
+                        $_SESSION['pseudo'] = $_POST['inputPseudo'];
+                        echo '<script> location.replace("profil.php"); </script>';
+                    }catch(PDOException $e){
+                        echo ('Ce pseudo existe déjà');
+                    }
                 }
 
                 ?>
@@ -58,7 +64,8 @@ if (!is_conn()) {
                             <h3><a class="fa-solid fa-pen btnFname"></a> FirstName </h3>
                             <h3><a class="fa-solid fa-pen btnLname"></a> LastName </h3>
                             <h3><a class="fa-solid fa-pen btnAge"></a> Age </h3>
-                            <h3><a class="">**</a> Ville </h3>
+                            <h3><a class="fa-solid fa-pen btnVille"></a> Ville </h3>
+                            <h3><a class="">**</a> Nationnalité </h3>
                         </div>
 
 
@@ -89,15 +96,43 @@ if (!is_conn()) {
                             <input class='inputAge' name='inputAge' type="hidden" value='<?php echo $key['birth_day'] ?>'>
 
 
-                            <h3>
+                            <h3 class='h3Ville'>
                                 <?php
-                                $req = $pdo->query('SELECT name_ville FROM ville WHERE id_ville = "' . $key['id_ville_user'] . '"');
+                                $req = $pdo->query('SELECT name_ville,nationnalite,id_ville FROM ville WHERE id_ville = "' . $key['id_ville_user'] . '"');
                                 $aff = $req->fetchAll();
                                 foreach ($aff as $key) {
                                     echo $key['name_ville'];
+                                    $lavile = $key['name_ville'];
+                                    $natio = $key['nationnalite'];
+                                ?>
+                            </h3>
+
+
+
+                            <select name="ville" name='ville' id="ville" class='inputVille'>
+                            <option value="<?php echo $key['id_ville'] ?>"><?php echo $key['name_ville'] ?></option>
+                            <?php 
+                            }
+                            ?>
+                                <?php 
+                                $req = $pdo->query('SELECT name_ville,id_ville FROM ville');
+                                $aff = $req->fetchAll();
+                                foreach ($aff as $key) {
+                                    if($lavile != $key['name_ville']):
+                                ?>
+                                <option value="<?php echo $key['id_ville'] ?>"><?php echo $key['name_ville'] ?></option>
+                                <?php endif;
                                 }
                                 ?>
+                            </select>
 
+
+
+
+                            <h3>
+                                <?php 
+                                echo $natio;
+                                ?>
                             </h3>
 
                         </div>

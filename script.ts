@@ -41,10 +41,10 @@ images.forEach(img => {
     img.addEventListener('click', () => {
         images.forEach(img2 => {
             if(img2 !== img){
-                img2.classList.remove('select')
+                img2.classList.remove('selecti')
             }
         })
-        img.classList.add('select')
+        img.classList.add('selecti')
     })
 })
 
@@ -112,5 +112,21 @@ btnAge.addEventListener('click',()=>{
     }else{
         h3Age.style.display = 'flex'
         inputAge.type = 'hidden'
+    }
+})
+
+const btnVille = document.querySelector('.btnVille')
+const h3Ville = document.querySelector('.h3Ville')
+const inputVille = document.querySelector('.inputVille')
+
+btnVille.style.cursor = 'pointer'
+btnVille.addEventListener('click',()=>{
+    if (h3Ville.style.display != 'none' && inputVille.style.display != 'flex') {
+        h3Ville.style.display = 'none'
+        inputVille.style.display = 'flex'
+        btnSubModif.style.display = 'flex'
+    }else{
+        h3Ville.style.display = 'flex'
+        inputVille.style.display = 'none'
     }
 })
